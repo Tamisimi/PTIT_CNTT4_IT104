@@ -1,187 +1,132 @@
-import { Button, Input } from "antd";
-import { Pencil, Trash2 } from "lucide-react";
-import { useState } from "react";
-import { v7 as uuid } from "uuid";
+import React, { useState } from 'react';
 
-interface Task {
-    id: number | string;
-    name: string;
-    isCompleted: boolean;
+interface Post {
+    id: number;
+    title: string;
+    content: string;
+    likes: number;
 }
 
-export default function TodoList() {
-    const [task, setTask] = useState<string>("");
-    const [error, setError] = useState<string>("");
-    const [tasks, setTasks] = useState<Task[]>(() => {
-        const taskLocals = localStorage.getItem("tasks");
-        return taskLocals ? JSON.parse(taskLocals) : [];
-    });
-    const [editingTaskId, setEditingTaskId] = useState<string | number | null>(null);
-    const [editText, setEditText] = useState<string>("");
+export default function UserInterface() {
+    const [posts, setPosts] = useState<Post[]>([
+        { id: 1, title: 'Tiêu đề 1', content: 'Nội dung 1', likes: 0 },
+        { id: 2, title: 'Tiêu đề 2', content: 'Nội dung 2', likes: 1 },
+    ]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [nextId, setNextId] = useState(3);
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-    // Handle input change
-    const handleChangeTask = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (!event.target.value) {
-            setError("Tên công việc không được để trống");
-        } else {
-            setError("");
+    const postCount = posts.length;
+    const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
+
+    const handleAddPost = (title: string, content: string) => {
+        if (title.trim() && content.trim()) {
+            setPosts([...posts, { id: nextId, title, content, likes: 0 }]);
+            setNextId(nextId + 1);
+            setIsModalOpen(false);
+            setTitle('');
+            setContent('');
         }
-        setTask(event.target.value);
     };
 
-    // Handle form submit
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        if (!task) {
-            setError("Tên công việc không được để trống");
-            return;
+    const handleDeletePost = (id: number) => {
+        setPosts(posts.filter(post => post.id !== id));
+    };
+
+    const handleLikePost = (id: number) => {
+        setPosts(posts.map(post =>
+            post.id === id ? { ...post, likes: post.likes + 1 } : post
+        ));
+    };
+
+    const isValid = title.trim() && content.trim();
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (isValid) {
+            handleAddPost(title, content);
         }
-
-        const newTask: Task = {
-            id: uuid(),
-            name: task,
-            isCompleted: false,
-        };
-
-        const taskClones = [...tasks, newTask];
-        setTasks(taskClones);
-        localStorage.setItem("tasks", JSON.stringify(taskClones));
-        setTask("");
     };
 
-    // Handle task status change
-    const handleChangeStatus = (id: number | string) => {
-        const updateTasks = tasks.map((task: Task) => {
-            if (task.id === id) {
-                return { ...task, isCompleted: !task.isCompleted };
-            }
-            return task;
-        });
-
-        setTasks(updateTasks);
-        localStorage.setItem("tasks", JSON.stringify(updateTasks));
+    const onCancel = () => {
+        setIsModalOpen(false);
+        setTitle('');
+        setContent('');
     };
-
-    // Handle task deletion
-    const handleDeleteTask = (id: number | string) => {
-        const updatedTasks = tasks.filter((task: Task) => task.id !== id);
-        setTasks(updatedTasks);
-        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    };
-
-    // Handle task edit initiation
-    const handleEditTask = (task: Task) => {
-        setEditingTaskId(task.id);
-        setEditText(task.name);
-    };
-
-    // Handle edit input change
-    const handleEditChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEditText(event.target.value);
-    };
-
-    // Handle edit submission
-    const handleEditSubmit = (id: number | string) => {
-        if (!editText) {
-            setError("Tên công việc không được để trống");
-            return;
-        }
-
-        const updatedTasks = tasks.map((task: Task) => {
-            if (task.id === id) {
-                return { ...task, name: editText };
-            }
-            return task;
-        });
-
-        setTasks(updatedTasks);
-        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-        setEditingTaskId(null);
-        setEditText("");
-    };
-
-    // Calculate completed tasks
-    const completedTasks = tasks.filter((task: Task) => task.isCompleted).length;
 
     return (
-        <div className="h-screen flex justify-center items-center">
-            <div className="w-[1000px] border border-[#dadada] p-6 rounded-lg shadow-sm">
-                <h3 className="text-center text-[24px] font-semibold mb-6">
-                    Danh sách công việc
-                </h3>
-                <form onSubmit={handleSubmit} className="flex gap-5 mb-3">
-                    <Input
-                        value={task}
-                        onChange={handleChangeTask}
-                        placeholder="Nhập tên công việc"
-                    />
-                    <Button htmlType="submit" type="primary">
-                        Thêm
-                    </Button>
-                </form>
-
-                {error && (
-                    <p className="mb-6 text-red-600 text-[14px]">
-                        {error}
-                    </p>
-                )}
-
-                <ul className="mb-6">
-                    {tasks.map((task: Task) => (
-                        <li key={task.id} className="flex justify-between items-center py-2">
-                            <div className="flex items-center gap-3">
-                                <input
-                                    type="checkbox"
-                                    checked={task.isCompleted}
-                                    onChange={() => handleChangeStatus(task.id)}
-                                />
-                                {editingTaskId === task.id ? (
-                                    <div className="flex items-center gap-2">
-                                        <Input
-                                            value={editText}
-                                            onChange={handleEditChange}
-                                            onPressEnter={() => handleEditSubmit(task.id)}
-                                        />
-                                        <Button
-                                            type="primary"
-                                            onClick={() => handleEditSubmit(task.id)}
-                                        >
-                                            Lưu
-                                        </Button>
-                                        <Button
-                                            onClick={() => setEditingTaskId(null)}
-                                        >
-                                            Hủy
-                                        </Button>
-                                    </div>
-                                ) : (
-                                    <span className={task.isCompleted ? "line-through" : ""}>
-                                        {task.name}
-                                    </span>
-                                )}
-                            </div>
-                            {editingTaskId !== task.id && (
-                                <div className="flex items-center gap-3">
-                                    <Pencil
-                                        size={18}
-                                        className="text-orange-400 hover:text-orange-600 cursor-pointer"
-                                        onClick={() => handleEditTask(task)}
-                                    />
-                                    <Trash2
-                                        size={18}
-                                        className="text-red-400 hover:text-red-600 cursor-pointer"
-                                        onClick={() => handleDeleteTask(task.id)}
-                                    />
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-                <div>
-                    <span>Công việc đã hoàn thành: </span>
-                    <span>{completedTasks}</span> / <span>{tasks.length}</span>
-                </div>
+        <div className="min-h-screen bg-gradient-to-b from-purple-400 to-pink-300 p-6">
+            <div className="flex justify-between text-white text-lg font-semibold mb-6">
+                <span>{postCount} Bài viết</span>
+                <span>Lượt thích {totalLikes}</span>
             </div>
-        </div>
-    );
-}
+            <div className="flex justify-between mb-6">
+                <select className="p-2 bg-white bg-opacity-50 rounded-lg text-gray-700">
+                    <option>Lọc theo: Tất cả bài viết</option>
+                </select>
+                <button
+                    className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    Tạo bài viết
+                </button>
+            </div>
+            <div className="space-y-4">
+                {posts.map(post => (
+                    <div
+                        key={post.id}
+                        className="bg-white bg-opacity-80 p-4 rounded-lg shadow-md"
+                    >
+                        <h3 className="text-lg font-semibold">{post.title}</h3>
+                        <p className="text-gray-600">{post.content}</p>
+                        <div className="flex items-center mt-2">
+                            <button
+                                className="text-red-500 mr-2"
+                                onClick={() => handleLikePost(post.id)}
+                            >
+                                ❤️ {post.likes}
+                            </button>
+                            <button
+                                className="text-gray-500 mr-2"
+                                onClick={() => handleDeletePost(post.id)}
+                            >
+                                🗑️
+                            </button>
+                            <span className="text-gray-400">S</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" onClick={onCancel}>
+                    <div className="bg-white p-6 rounded-lg w-96" onClick={e => e.stopPropagation()}>
+                        <h2 className="text-xl font-semibold mb-4">Bài viết của bạn</h2>
+                        <form onSubmit={handleSubmit}>
+                            <label className="block mb-2">Tiêu đề*</label>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                                className="w-full p-2 mb-4 border rounded"
+                                required
+                            />
+                            <label className="block mb-2">Nội dung*</label>
+                            <textarea
+                                value={content}
+                                onChange={e => setContent(e.target.value)}
+                                className="w-full p-2 mb-4 border rounded"
+                                required
+                            />
+                            <div className="flex justify-end">
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white p-2 rounded mr-2 disabled:bg">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )
+            }
+
+
