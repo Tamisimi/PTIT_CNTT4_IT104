@@ -1,17 +1,18 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Register from './Register'
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Student from './Student';
 
-export default function Bai1() {
+export default function Ex4() {
     const routes = createBrowserRouter([
         {
-            path: '/register',
-            element: <Register></Register>
-        }
-    ])
+            path: "/student",
+            element: <Student />,
+        },
+    ]);
+
     return (
         <div>
-            <RouterProvider router={routes}></RouterProvider>
+            <RouterProvider router={routes} />
         </div>
-    )
+    );
 }

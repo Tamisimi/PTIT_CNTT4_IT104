@@ -1,22 +1,22 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Contact from './Contact'
-import Home from './Home'
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ProductDetail from './ProductDetail';
 
 export default function Ex1() {
     const routes = createBrowserRouter([
         {
-            path: '/',
-            element: <Home></Home>
+            path: "/product",
+            element: <h1>Product</h1>,
         },
         {
-            path: '/contact',
-            element: <Contact></Contact>
-        }
-    ])
+            path: "/product/:id",
+            element: <ProductDetail />,
+        },
+    ]);
+
     return (
         <div>
-            <RouterProvider router={routes}></RouterProvider>
+            <RouterProvider router={routes} />
         </div>
-    )
+    );
 }

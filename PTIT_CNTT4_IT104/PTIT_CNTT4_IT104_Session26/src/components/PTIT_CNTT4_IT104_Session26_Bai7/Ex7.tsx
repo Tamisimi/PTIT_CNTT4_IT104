@@ -1,27 +1,28 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import CustomLink from './CustomLink'
-import NotFound from './NotFound'
-import HomePage from '././HomePage'
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Teams from './Teams';
 
-export default function Bai7() {
+export default function Ex7() {
     const routes = createBrowserRouter([
         {
-            path: "/",
-            element: <CustomLink />
+            path: "/teams",
+            element: <Teams />,
+            children: [
+                {
+                    index: true,
+                    element: <TeamsIndex />,
+                },
+                {
+                    path: ":teamId",
+                    element: <Team />,
+                },
+            ],
         },
-        {
-            path: "/homePage",
-            element: <HomePage />
-        },
-        {
-            path: "*",
-            element: <NotFound />
-        },
-    ])
+    ]);
+
     return (
         <div>
             <RouterProvider router={routes} />
         </div>
-    )
+    );
 }

@@ -1,17 +1,23 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import NotFound from './NotFound'
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import PrivateRouter from './PrivateRouter';
+import Login from './Login';
 
-export default function Bai1() {
+export default function Ex5() {
     const routes = createBrowserRouter([
         {
-            path: '*',
-            element: <NotFound></NotFound>
-        }
-    ])
+            path: "/login",
+            element: <Login />,
+        },
+        {
+            path: "/account",
+            element: <PrivateRouter />,
+        },
+    ]);
+
     return (
         <div>
-            <RouterProvider router={routes}></RouterProvider>
+            <RouterProvider router={routes} />
         </div>
-    )
+    );
 }
