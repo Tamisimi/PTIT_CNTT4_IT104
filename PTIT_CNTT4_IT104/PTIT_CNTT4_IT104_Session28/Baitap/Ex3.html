@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function processArray(arr, callback) {
+            arr.forEach((num, index) => {
+                setTimeout(() => {
+                    callback(num);
+                }, index * 1000)
+            });
+        }
+        let number = [1, 2, 3, 4, 5]
+        processArray(number, (num) => {
+            console.log("Phan thu thu" + num)
+        })
+    </script>
+</body>
+
+</html>

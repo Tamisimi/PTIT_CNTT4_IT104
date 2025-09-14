@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="">
+        function calculate(a, b, c) {
+            let result = a + b;
+            c(result);
+        }
+        function callbackCalculate(result) {
+            console.log("keet qua cua phep toan la", result);
+        }
+        let numberA = +prompt("moi nhap so thu nhat");
+        let numberB = +prompt("moi nhap so thu 2");
+        calculate(numberA, numberB, callbackCalculate);
+    </script>
+</body>
+
+</html>
