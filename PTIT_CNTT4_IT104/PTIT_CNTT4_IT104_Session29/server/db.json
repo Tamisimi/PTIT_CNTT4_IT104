@@ -1,0 +1,91 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "product_name": "Laptop Dell XPS 13",
+            "image": "https://example.com/images/laptop-dell.jpg",
+            "price": 1200,
+            "quantity": 10,
+            "created_at": "2025-09-15T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "product_name": "iPhone 14 Pro",
+            "image": "https://example.com/images/iphone-14.jpg",
+            "price": 999,
+            "quantity": 20,
+            "created_at": "2025-09-15T11:00:00Z"
+        },
+        {
+            "id": 3,
+            "product_name": "Tai nghe Sony WH-1000XM5",
+            "image": "https://example.com/images/sony-headphones.jpg",
+            "price": 350,
+            "quantity": 15,
+            "created_at": "2025-09-15T12:00:00Z"
+        },
+        {
+            "id": 4,
+            "product_name": "Máy ảnh Canon EOS R5",
+            "image": "https://example.com/images/canon-camera.jpg",
+            "price": 2500,
+            "quantity": 5,
+            "created_at": "2025-09-15T13:00:00Z"
+        },
+        {
+            "id": 5,
+            "product_name": "Bàn phím cơ Keychron K8",
+            "image": "https://example.com/images/keychron-k8.jpg",
+            "price": 80,
+            "quantity": 30,
+            "created_at": "2025-09-15T14:00:00Z"
+        }
+    ],
+    "students": [
+        {
+            "id": 1,
+            "student_name": "Nguyễn Văn An",
+            "email": "an.nguyen@example.com",
+            "address": "123 Đường Láng, Hà Nội",
+            "phone": "0912345678",
+            "status": true,
+            "created_at": "2025-09-16T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "student_name": "Trần Thị Bình",
+            "email": "binh.tran@example.com",
+            "address": "456 Lê Lợi, TP.HCM",
+            "phone": "0987654321",
+            "status": false,
+            "created_at": "2025-09-16T11:00:00Z"
+        },
+        {
+            "id": 3,
+            "student_name": "Lê Minh Châu",
+            "email": "chau.le@example.com",
+            "address": "789 Nguyễn Huệ, Đà Nẵng",
+            "phone": "0901234567",
+            "status": true,
+            "created_at": "2025-09-16T12:00:00Z"
+        },
+        {
+            "id": 4,
+            "student_name": "Phạm Quốc Đạt",
+            "email": "dat.pham@example.com",
+            "address": "101 Trần Phú, Hải Phòng",
+            "phone": "0932143657",
+            "status": true,
+            "created_at": "2025-09-16T13:00:00Z"
+        },
+        {
+            "id": 5,
+            "student_name": "Hoàng Thị E",
+            "email": "e.hoang@example.com",
+            "address": "202 Hùng Vương, Cần Thơ",
+            "phone": "0978765432",
+            "status": false,
+            "created_at": "2025-09-16T14:00:00Z"
+        }
+    ]
+}
