@@ -24,7 +24,7 @@ export default function App() {
 //   name: string,
 // }
 // export default function App() {
-//   const [users, setUsers] = useState<any>([]);
+//   const [users, cd setUsers] = useState<any>([]);
 
 //   async function getData() {
 //     let res = await axios.get("http://localhost:8080/users");
