@@ -1,0 +1,197 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "học reactjs",
+      "image": "typicode",
+      "date": "17/9",
+      "status": true
+    },
+    {
+      "id": 2,
+      "title": "học API",
+      "image": "typicode",
+      "date": "17/9",
+      "status": false
+    },
+    {
+      "id": 3,
+      "title": "học json-server",
+      "image": "typicode",
+      "date": "17/9",
+      "status": true
+    },
+    {
+      "title": "hohoho",
+      "image": "hoho",
+      "status": true,
+      "content": "hahha",
+      "id": 4
+    },
+    {
+      "data": {
+        "title": "hohoho",
+        "image": "hoho",
+        "status": true,
+        "content": "hahha",
+        "id": 4
+      },
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "93",
+        "content-type": "application/json; charset=utf-8",
+        "expires": "-1",
+        "location": "http://localhost:8080/posts/4",
+        "pragma": "no-cache"
+      },
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http",
+          "fetch"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        "method": "post",
+        "url": "http://localhost:8080/posts",
+        "data": "{\"title\":\"hohoho\",\"image\":\"hoho\",\"status\":true,\"content\":\"hahha\"}",
+        "allowAbsoluteUrls": true
+      },
+      "request": {},
+      "id": 5
+    },
+    {
+      "data": {
+        "title": "hohoho",
+        "image": "hoho",
+        "status": true,
+        "content": "hahha",
+        "id": 4
+      },
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "93",
+        "content-type": "application/json; charset=utf-8",
+        "expires": "-1",
+        "location": "http://localhost:8080/posts/4",
+        "pragma": "no-cache"
+      },
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http",
+          "fetch"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        "method": "post",
+        "url": "http://localhost:8080/posts",
+        "data": "{\"title\":\"hohoho\",\"image\":\"hoho\",\"status\":true,\"content\":\"hahha\"}",
+        "allowAbsoluteUrls": true
+      },
+      "request": {},
+      "title": "hoc it",
+      "image": "hahah",
+      "content": "hahah",
+      "id": 6
+    },
+    {
+      "data": {
+        "title": "hohoho",
+        "image": "hoho",
+        "status": true,
+        "content": "hahha",
+        "id": 4
+      },
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "93",
+        "content-type": "application/json; charset=utf-8",
+        "expires": "-1",
+        "location": "http://localhost:8080/posts/4",
+        "pragma": "no-cache"
+      },
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http",
+          "fetch"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        "method": "post",
+        "url": "http://localhost:8080/posts",
+        "data": "{\"title\":\"hohoho\",\"image\":\"hoho\",\"status\":true,\"content\":\"hahha\"}",
+        "allowAbsoluteUrls": true
+      },
+      "request": {},
+      "title": "hoc react it",
+      "image": "hahaha",
+      "content": "gadgsg",
+      "id": 7
+    }
+  ]
+}
