@@ -1,0 +1,18 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "Hoc hanh",
+            "author": "Loc",
+            "year": 2025,
+            "category": "Sad"
+        },
+        {
+            "id": 2,
+            "title": "Choi game",
+            "author": "Minh",
+            "year": 2025,
+            "category": "Happy"
+        }
+    ]
+}
